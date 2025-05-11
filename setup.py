@@ -8,9 +8,9 @@ setup(
    description="scraping para extraer informaciòn de paginas para su analisis posterior para la materia programaciòn de analisis de datos ",
    py_modules=[" "],
    install_requires=[
-   "pandas",
-   "openpyxl",
-   "requests",
-   "beautifulsoup"
+       "pandas",
+       "openpyxl",
+       "requests",
+       "beautifulsoup4"
    ]
 )
