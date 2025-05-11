@@ -18,9 +18,9 @@ class Dataweb:
             respuesta = requests.get(self.url,headers=headers)
             if respuesta.status_code != 200:
                 print("La url no se alcanzó")
-            print(respuesta.text)
-
-
+            soup = BeautifulSoup(respuesta.text, 'html.parser')
+            tabla = soup.select_one('div[data-testid="history-table"] table')
+            print(tabla)
         except Exception as err:
             print("Error Al Obtener Datos(Funciòn obtener_datos) ")    
 
