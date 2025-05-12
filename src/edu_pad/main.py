@@ -1,10 +1,13 @@
-from dataweb import Dataweb 
+from dataweb import Dataweb
 import pandas as pd
+
 
 def main():
     dataweb = Dataweb()
-    df = pd.DataFrame()
-    df.to_csv("data_web.cvs")
+    df = dataweb.obtener_datos()
+    df = dataweb.convetir_numericos(df)
+    df.to_csv("src\static\csv\data_webdb.csv", index=False)
 
-if __name__ == "main":
+
+if __name__ == "__main__":
     main()

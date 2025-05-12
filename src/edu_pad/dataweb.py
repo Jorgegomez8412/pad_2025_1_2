@@ -38,20 +38,19 @@ class Dataweb:
             })
             df = self.convetir_numericos(df) 
             df.to_excel("dataweb_formateado.xlsx")     
-              
+            return df
         except Exception as err:
             print("Error Al Obtener Datos(Funciòn obtener_datos)")
-
-    def convetir_numericos(self,df=pd.DataFrame()):
+            df = pd.DataFrame()
+    def convetir_numericos(self, df=pd.DataFrame()):
         df = df.copy()
         if len(df)>0:
           for col in ('fecha', 'abrir', 'max', 'min', 'cerrar', 'cierre_ajustado', 'volumen'):
                 df[col] = (
                      df[col]
-                    .str.replace(r'\.','',regex=True)
-                    .str.replace(',','.',regex=True)
-                   
-                    )
+                    .str.replace(r"\.","",regex=True)
+                    .str.replace(",",'.'))
+                    
         return df
       
 
