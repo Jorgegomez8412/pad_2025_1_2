@@ -28,7 +28,7 @@ jobs:
       - name: Paso 6 - instalar dependencias
         run: pip install -e .
       - name: Paso 7 - Ejecutar main_extraccion
-        run: python src/edu_pad/main_extracion.py
+        run: python src/edu_pad/main_extraccion.py
       - name: Paso 8 - Ejecutar main_inges
         run: python src/edu_pad/main_inges.py
       - name: Paso 9 - Guardar el commit con el ultimo cambio desde pipeline
