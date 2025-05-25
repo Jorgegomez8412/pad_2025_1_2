@@ -30,7 +30,7 @@ jobs:
       - name: Paso 7 - Ejecutar Main
         run: python src/edu_pad/main.py
       - name: Paso 8 - Guardar el commit con el ultimo cambio desde pipeline
-        uses: Jorgegomez8412/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: Genera archivo csv de las web
           commit_user_name: Jorge Gomez [GitHub Actions]
