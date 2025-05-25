@@ -1,4 +1,4 @@
-name: accionables
+name: Actions
 
 on:
   push:
