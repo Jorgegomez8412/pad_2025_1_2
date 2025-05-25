@@ -35,4 +35,4 @@ jobs:
           commit_message: Generar archivo csv de las web
           commit_user_name: Jorge Gomez [GitHub Actions]
           commit_user_email: jorge.gomez65@est.iudigital.edu.co
-          commit_author: Andres Callejas <jorge.gomez65@edu.iudigital.edu.co>
+          commit_author: Jorge Gomez <jorge.gomez65@edu.iudigital.edu.co>
