@@ -37,7 +37,11 @@ class Dataweb:
                 'Volumen': 'volumen'
             })
             df = self.convetir_numericos(df) 
-            df.to_excel("dataweb_formateado.xlsx")     
+            #df.to_excel("dataweb_formateado.xlsx")  
+            print("**************************************************************************")
+            print("Datos Obtenidos")
+            print("**************************************************************************")
+            print(df.head())  
             return df
         except Exception as err:
             print("Error Al Obtener Datos(Funciòn obtener_datos)")
