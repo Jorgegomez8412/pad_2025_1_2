@@ -10,8 +10,8 @@ from datetime import datetime
 
 class DatabaseMonitor:
     def __init__(self):
-        self.rutadb = "src/edu_pad/static/db/dolar_analisis.db"
-        self.tabla = "dolar_analisis"
+        self.rutadb = "src/edu_pad/static/db/petroleo_analisis.db"
+        self.tabla = "petroleo_analisis"
         self.ruta_log = "src/edu_pad/static/logs/monitor_log.json"
         
     def verificar_base_datos(self):
