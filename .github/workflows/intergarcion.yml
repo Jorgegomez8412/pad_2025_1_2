@@ -1,0 +1,81 @@
+name: Actividad_3
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Configuracion
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Login docker GitHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Paso 1 - Checkout Repositorio
+        uses: actions/checkout@v4
+      - name: Paso 2 - Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9.2'
+      - name: Paso 3 - Crear entorno virtual
+        run: python -m venv venv
+      - name: Paso 4 - Activar entorno virtual
+        run: ./venv/Scripts/activate
+      - name: Paso 5 - Actualizar pip
+        run: pip install --upgrade pip
+      - name: Paso 6 - Instalar dependecias
+        run: pip install -e .
+
+
+  test:
+
+      name: Extractor de Data
+      runs-on: windows-latest
+      needs: build
+      permissions:
+        contents: write
+      steps:
+        - name: Paso 1 - Checkout Repositorio
+          uses: actions/checkout@v4
+        - name: Paso 4 - Activar entorno virtual
+          run: ./venv/Scripts/activate
+        - name: Paso 7 - Ejecutar Script
+          run: python src/edu_pad/main_extraccion.py
+
+
+  run-script:
+      name: digerir  Datos
+      runs-on: windows-latest
+      needs: test
+      permissions:
+        contents: write
+      steps:
+        - name: Paso 1 - Checkout Repositorio
+          uses: actions/checkout@v4
+        - name: Paso 4 - Activar entorno virtual
+          run: ./venv/Scripts/activate
+        - name: Paso 8 - Ejecutar Script
+          run: python src/edu_pad/main_inges.py
+
+  auto-commit:
+      name: Integracion Cambio
+      runs-on: windows-latest
+      needs: run-script
+      permissions:
+        contents: write
+      steps:
+        - name: Paso 9 - crear commit automatico
+          uses: stefanzweifel/git-auto-commit-action@v5
+          with:
+            commit_message: Entrega de la actividad 1 - Paso 9
+            commit_user_name: Jorge Gomez [GitHub Actions]
+            commit_user_email: jorge.gomez65@est.iudigital.edu.co
+            commit_author: Jorge Gomez <jorge.gomez65@est.iudigital.edu.co>
+      
