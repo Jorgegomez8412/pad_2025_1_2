@@ -4,7 +4,7 @@ WORKDIR /pad_2025_1_2
 
 COPY . .
 
-RUN mkdir -p src/edu_pad/static/csv static/db
+RUN mkdir -p src/edu_pad/src
 
 RUN pip install --upgrade pip \
     && pip install -e . \
