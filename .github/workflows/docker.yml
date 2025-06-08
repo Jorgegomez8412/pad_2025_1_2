@@ -49,4 +49,7 @@ jobs:
       - name: Auto-commit final
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: " Commit automático después de ejecutar Docker"
+          commit_message: Entrega de la actividad 1 - Paso 9
+          commit_user_name: Jorge Gomez [GitHub Actions]
+          commit_user_email: jorge.gomez65@est.iudigital.edu.co
+          commit_author: Jorge Gomez <jorge.gomez65@est.iudigital.edu.co>
