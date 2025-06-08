@@ -3,6 +3,7 @@ name: Act-3-docker
 on:
   push:
     branches: [ main ]
+
 permissions:
   contents: write
 
@@ -13,13 +14,15 @@ jobs:
       - name: Paso 1 - Checkout Repositorio
         uses: actions/checkout@v4
 
-      - name: Paso 2 Login docker GitHub
+      - name: Paso 2 - Login en Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
-      - name: Paso 3 - configurar la imagen docker
+
+      - name: Paso 3 - Construir imagen Docker
         run: docker build -t contenedor .
+
       - name: Paso 4 - Ejecutar extractor
         run: |
           docker run --rm \
@@ -32,21 +35,18 @@ jobs:
           docker run --rm \
             -v "${{ github.workspace }}/static/csv":/pad_2025_1_2/static/csv \
             -v "${{ github.workspace }}/static/db":/pad_2025_1_2/static/db \
-            contenedor edu_pad.main_inges
+            contenedor edu_pad.main_ingesta
+
   auto-commit:
-   name: Integración Cambio
-   runs-on: windows-latest    
-   permissions:
-    contents: write
+    runs-on: ubuntu-latest
+    needs: build 
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
 
-   steps:
-    - name: Checkout del repositorio
-      uses: actions/checkout@v4  # NECESARIO para que haya un repo Git
-
-    - name: Paso 6 - Crear commit automático
-      uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: "Entrega de la actividad 3 - Paso 6"
-        commit_user_name: Jorge Gomez [GitHub Actions]
-        commit_user_email: jorge.gomez65@est.iudigital.edu.co
-        commit_author: Jorge Gomez <jorge.gomez65@est.iudigital.edu.co>
+      - name: Auto-commit final
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: " Commit automático después de ejecutar Docker"
