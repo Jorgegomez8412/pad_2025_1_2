@@ -12,6 +12,8 @@ RUN pip install --upgrade pip \
 
 ENV PYTHONPATH=/pad_2025_1_2/src
 
+
 ENTRYPOINT ["python", "-m"]
-CMD ["edu_pad.main_extraccion"]
+#CMD ["edu_pad.main_extraccion", "edu_pad.main_inges" ]
+CMD ["src.edu_pad.main_principal"]
 
