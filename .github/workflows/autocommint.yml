@@ -1,17 +1,19 @@
 name: Auto Commit
 
 on:
+  schedule:
+    - cron: '0 * * * *'  # Ejecuta cada hora
   push:
     paths:
-      - 'docker.yml'  # Puedes ajustar esto según qué archivo dispare el workflow
-  workflow_dispatch:
+      - 'docker.yml'     # Solo se ejecuta si se modifica este archivo
+  workflow_dispatch:      # Permite ejecutar el workflow manualmente
 
 jobs:
-  auto-commit:
-    runs-on: ubuntu-late
+  build:
+    runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: write  # Necesario para poder hacer push
 
     steps:
       - name: Checkout del repositorio
@@ -27,3 +29,5 @@ jobs:
           commit_user_name: "Jorge Gomez [GitHub Actions]"
           commit_user_email: "jorge.gomez65@est.iudigital.edu.co"
           commit_author: "Jorge Gomez <jorge.gomez65@est.iudigital.edu.co>"
+
+
