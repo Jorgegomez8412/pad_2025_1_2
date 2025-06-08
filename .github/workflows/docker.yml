@@ -37,4 +37,24 @@ jobs:
             -v "${{ github.workspace }}/static/db":/pad_2025_1_2/static/db \
             contenedor edu_pad.main_inges    
   
- 
+
+  auto-commit:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Auto-commit
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Entrega de la actividad 3 - Paso 6"
+          commit_user_name: "Jorge Gomez [GitHub Actions]"
+          commit_user_email: "jorge.gomez65@est.iudigital.edu.co"
+          commit_author: "Jorge Gomez <jorge.gomez65@est.iudigital.edu.co>" 
