@@ -43,7 +43,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
       - name: Auto-commit
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
