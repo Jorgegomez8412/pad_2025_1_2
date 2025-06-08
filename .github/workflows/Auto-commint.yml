@@ -2,7 +2,7 @@ name: Auto Commit
 
 on:
   workflow_run:
-    workflows: ["docker"]
+    workflows: ["Act-3-docker"]
     types:
       - completed
 
