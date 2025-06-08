@@ -5,6 +5,7 @@ WORKDIR /pad_2025_1_2
 
 
 COPY . .
+COPY src/edu_pad/static/csv/data_webdb.csv src/edu_pad/static/csv/data_webdb.csv
 
 
 RUN mkdir -p static/csv static/db
