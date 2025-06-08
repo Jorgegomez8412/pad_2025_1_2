@@ -16,8 +16,8 @@ jobs:
       - name: Paso 2 Login docker GitHub
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKER_HUB_USERNAME }}
-          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
       - name: Paso 3 - configurar la imagen docker
         run: docker build -t contenedor .
       - name: Paso 4 - Ejecutar extractor
