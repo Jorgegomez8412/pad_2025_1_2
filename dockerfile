@@ -24,4 +24,4 @@ ENV PYTHONPATH=/pad_2025_1_2/src
 ENTRYPOINT ["python", "-m"]
 
 
-CMD ["edu_pad.main_extraccion"]
+CMD ["edu_pad.main_extraccion" ]
