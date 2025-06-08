@@ -37,8 +37,7 @@ jobs:
             -v "${{ github.workspace }}/static/db":/pad_2025_1_2/static/db \
             contenedor edu_pad.main_inges
 
-      - name: Forzar cambio en archivo para test
-        run: echo "Última ejecución: $(date)" >> static/csv/petroleo_analisis.csv
+      
   
   auto-commit:
     runs-on: ubuntu-latest
