@@ -3,6 +3,8 @@ name: Act-3-docker
 on:
   push:
     branches: [ main ]
+permissions:
+  contents: write
 
 jobs:
   build:
