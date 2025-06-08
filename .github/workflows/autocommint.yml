@@ -2,7 +2,7 @@ name: Auto Commit
 
 on:
   workflow_run:
-    workflows: ["Docker Workflow"]
+    workflows: ["docker.yml"]
     types:
       - completed
 
