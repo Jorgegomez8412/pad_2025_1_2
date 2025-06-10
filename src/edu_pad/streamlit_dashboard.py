@@ -15,5 +15,5 @@ def main():
     columnas = ["abrir","max","min","cerrar","cierre_ajustado","volumen","indicador"]
     df_2 = df[columnas]
     profile = ProfileReport(df_2, title="Dashboard de indicadores del petroleo")
-    st.title("Análisis de Datos")
+    st.title("Análisis de Data")
     #st.write(profile.to_html(),unsafe_allow
