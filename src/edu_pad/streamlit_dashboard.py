@@ -16,7 +16,7 @@ def main():
         # Normalizar nombres de columnas
         df.columns = df.columns.str.strip().str.lower()
 
-        columnas_deseadas = ["Abrir", "Max", "Min", "Cerrar", "Cierre_ajustado", "Volumen"]
+        columnas_deseadas = ['fecha', 'abrir', 'max', 'min', 'cerrar', 'cierre_ajustado', 'volumen']
 
         # Verificar si todas las columnas están presentes
         if all(col in df.columns for col in columnas_deseadas):
